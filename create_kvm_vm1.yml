@@ -1,7 +1,7 @@
 ---
 - hosts:   kvm_host
   vars:
-    image_name: /mnt/tmpssd/rhel66_1.qcow2
+    image_name: rhel66_1
     instance_name: '{{ name }}'
     instance_dir: '/mnt/tmpssd/'
     tem_dir: /home/wangzezhi/ops/ansible/playbooks/templates
