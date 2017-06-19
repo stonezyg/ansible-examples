@@ -1,12 +1,12 @@
 ---
 # This playbook deploys the whole application stack in this site.
 
-- name: apply common configuration to all nodes
-  hosts: test_host
-  remote_user: root
+#- name: apply common configuration to all nodes
+#  hosts: test_host
+#  remote_user: root
 
-  roles:
-    - common
+#  roles:
+#    - common
 
 - name: configure and deploy the webservers and application code
   hosts: test_host
