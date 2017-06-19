@@ -9,14 +9,14 @@
 #    - common
 
 - name: configure and deploy the webservers and application code
-  hosts: test_host
+  hosts: test_machnie
   remote_user: root
 
   roles:
     - web
 
 - name: deploy MySQL and configure the databases
-  hosts: test_host
+  hosts: test_machine
   remote_user: root
 
   roles:
