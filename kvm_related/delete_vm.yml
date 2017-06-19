@@ -1,0 +1,31 @@
+---
+- hosts:   kvm_host
+  vars:
+    image_name: rhel66_1
+    instance_name: '{{ name }}'
+    instance_dir: '/mnt/tmpssd/'
+    tem_dir: /home/wangzezhi/ops/ansible/playbooks/templates
+    tem_file: "{{ tem_dir }}/set_ip_tem.sh.j2"
+    file_name: /tmp/set_ip.sh
+
+
+  tasks:
+  - name: just test virsh command 
+    shell: virsh list
+    become: true
+    tags: test
+    
+  - name: stop the instance
+    shell: virsh destroy {{ instance_name }}
+    become: true
+    tags: start
+
+  - name: destroy  the instance
+    shell: virsh  undefine  {{ instance_name }}
+    become: true
+    tags: deleteconfig
+
+  - name: destroy  the instance
+    shell: rm -rf  /mnt/tmpssd/ansiblekvmtest.qcow2
+    become: true
+    tags: deletedisk
