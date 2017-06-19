@@ -11,33 +11,11 @@
  echo exec('hostname');
  Print  "</BR>";
 echo  "List of Databases: </BR>";
-        {% for host in groups['test_machine'] %}
-                $link = mysqli_connect('localhost', '{{ hostvars[host]['dbuser'] }}', '{{ hostvars[host]['upassword'] }}') or die(mysqli_connect_error($link));
-        {% endfor %}
+        $link = mysqli_connect('localhost', '{{ hostvars[test_machine].dbuser }}', '{{ hostvars[test_machine].upassword }}') or die(mysqli_connect_error($link));
         $res = mysqli_query($link, "SHOW DATABASES;");
         while ($row = mysqli_fetch_assoc($res)) {
                 echo $row['Database'] . "\n";
         }
-mysqli_close($link);
-{% for hosta in groups['test_machine'] %}
-$linka = mysqli_connect('localhost', '{{ hostvars[hosta]['dbuser'] }}', '{{ hostvars[hosta]['upassword'] }}','world') or die(mysqli_connect_error($linka));
-{% endfor %}
-
-echo "\n";
-echo '</br>';
-/* Select queries return a resultset */
-if ($result = mysqli_query($linka, "SELECT * FROM city")) {
-    printf("Select returned %d rows.\n", mysqli_num_rows($result));
- echo "<table>";
-   while($rowa = mysqli_fetch_array($result))
-      {
-      echo "<tr><td>" .$rowa['ID']. "</td><td>" . $rowa['Name']. "</td><td>" . $rowa['CountryCode']. "</td><td>" . $rowa['District']. "</td><td>" . $rowa['Population']."</td></tr>";
-      }
-echo "</table>";
- /* free result set */
-    mysqli_free_result($result);
-}
-mysqli_close($linka);
 ?>
 </body>
 </html>
