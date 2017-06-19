@@ -13,6 +13,12 @@
     tem_file: "{{ tem_dir }}/set_ip_tem.sh.j2"
     file_name: /tmp/set_ip.sh
 
+
+  tasks:
+  - name: just test virsh command 
+    shell: virsh lsit
+    tags: file
+
   tasks:
   - name: create the file set_ip.sh
     template: src=templates/set_ip_tem.sh.j2 dest={{ file_name }}
