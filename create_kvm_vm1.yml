@@ -1,7 +1,7 @@
 ---
 - hosts:   kvm_host
   vars:
-    image_name: /mnt/tmpssd/rhel-guest-image-7.3-35.x86_64.qcow2
+    image_name: /mnt/tmpssd/rhel66_1.qcow2
     instance_name: '{{ name }}'
     instance_dir: '/mnt/tmpssd/'
     tem_dir: /home/wangzezhi/ops/ansible/playbooks/templates
@@ -11,8 +11,8 @@
 
   tasks:
   - name: just test virsh command 
-    shell: virsh lsit
-    tags: file
+    shell: virsh list
+    tags: test
 
   tasks:
   - name: create the file set_ip.sh
@@ -20,7 +20,7 @@
     tags: file
 
   - name: clone the instance
-    command: virt-clone -o {{ image_name }} -n {{ instance_name }}  -f /{{ instance_dir }}/{{ instance_name }}.qcow2
+    command: virt-clone -o {{ image_name }} -n {{ instance_name }}  -f {{ instance_dir }}{{ instance_name }}.qcow2
     tags: clone
 
   - name: copy in the  file set_ip.sh
