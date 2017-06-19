@@ -12,7 +12,7 @@
 
   tasks:
   - name: create the file set_ip.sh
-    template: src={{ tem_file }} dest={{ file_name }}
+    template: src=templates/set_ip_tem.sh.j2 dest={{ file_name }}
     tags: file
 
   - name: clone the instance
