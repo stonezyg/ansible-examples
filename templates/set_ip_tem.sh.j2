@@ -1,0 +1,14 @@
+#!/bin/bash
+#for kvm instance configure the ip address
+
+cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-eth1  
+DEVICE="eth1"  
+ONBOOT=yes  
+BOOTPROTO=static  
+IPADDR={{ ip }}  
+NETMASK={{ netmask }}  
+EOF
+
+/etc/init.d/network restart
+
+sed -i '/set_ip/ d' /etc/rc.d/rc.local  
