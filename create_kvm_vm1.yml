@@ -16,10 +16,7 @@
     tags: test
 
   - name: create the file set_ip.sh
-    template: src=templates/set_ip_tem.sh.j2 dest={{ file_name }}
-    owner: root
-    group: root
-    mode: '0755'
+    template: src=templates/set_ip_tem.sh.j2 dest={{ file_name }} owner=root group=root mode='0755'
     become: true
     tags: file
 
