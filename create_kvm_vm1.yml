@@ -6,9 +6,9 @@
   ansible_become_pass: galaxy
   remote_user: yagzhang
   vars:
-    image_name: centos7_2_v2_auto
+    image_name: /mnt/tmpssd/rhel-guest-image-7.3-35.x86_64.qcow2
     instance_name: '{{ name }}'
-    instance_dir: '{{ dir }}'
+    instance_dir: '/mnt/tmpssd/'
     tem_dir: /home/wangzezhi/ops/ansible/playbooks/templates
     tem_file: "{{ tem_dir }}/set_ip_tem.sh.j2"
     file_name: /tmp/set_ip.sh
@@ -25,7 +25,7 @@
     tags: file
 
   - name: clone the instance
-    command: virt-clone -o {{ image_name }} -n {{ instance_name }}  -f /{{ instance_dir }}/vm-images/{{ instance_name }}.qcow2
+    command: virt-clone -o {{ image_name }} -n {{ instance_name }}  -f /{{ instance_dir }}/{{ instance_name }}.qcow2
     tags: clone
 
   - name: copy in the  file set_ip.sh
