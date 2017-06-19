@@ -1,9 +1,9 @@
 ---
 - hosts:   kvm_host
   ansible_become: yes
-  ansible_become_method: su
-  ansible_become_user: root
-  ansible_become_pass: galaxy
+  ansible_become_method: su
+  ansible_become_user: root
+  ansible_become_pass: galaxy
   remote_user: yagzhang
   vars:
     image_name: /mnt/tmpssd/rhel-guest-image-7.3-35.x86_64.qcow2
