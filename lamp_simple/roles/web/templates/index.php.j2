@@ -14,13 +14,16 @@ echo  "List of Databases: </BR>";
         {% for host in groups['test_machine'] %}
 //                $link = mysqli_connect('{{ hostvars[host].ansible_default_ipv4.address }}', '{{ hostvars[host].dbuser }}', '{{ hostvars[host].upassword }}') or die(mysqli_connect_error($link));
                 $link = mysqli_connect('localhost', '{{ hostvars[host]['dbuser'] }}', '{{ hostvars[host]['upassword'] }}') or die(mysqli_connect_error($link));
-                $linka = mysqli_connect('localhost', '{{ hostvars[host]['dbuser'] }}', '{{ hostvars[host]['upassword'] }}','world') ;
-       {% endfor %}
+        {% endfor %}
         $res = mysqli_query($link, "SHOW DATABASES;");
         while ($row = mysqli_fetch_assoc($res)) {
                 echo $row['Database'] . "\n";
         }
 mysqli_close($link);
+{% for host in groups['test_machine'] %}
+$linka = mysqli_connect('localhost', '{{ hostvars[host]['dbuser'] }}', '{{ hostvars[host]['upassword'] }}','world') ;
+{% endfor %}
+
 echo "\n";
 echo '</br>';
 /* check connection */
