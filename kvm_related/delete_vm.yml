@@ -19,13 +19,13 @@
     shell: virsh destroy {{ instance_name }}
     become: true
     tags: destroy
-  
-  - name: destroy  the instance
+  
+  - name: destroy the instance
     shell: virsh  undefine  {{ instance_name }}
     become: true
     tags: deleteconfig
 
-  - name: delete disk
-    shell: rm -rf  /mnt/tmpssd/ansiblekvmtest.qcow2
+  - name: delete disk
+    shell: rm -rf  /mnt/tmpssd/ansiblekvmtest.qcow2
     become: true
     tags: deletedisk
