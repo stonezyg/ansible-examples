@@ -11,7 +11,9 @@
  echo exec('hostname');
  Print  "</BR>";
 echo  "List of Databases: </BR>";
-        $link = mysqli_connect('localhost', '{{ hostvars[test_machine].dbuser }}', '{{ hostvars[test_machine].upassword }}') or die(mysqli_connect_error($link));
+        {% for host in groups['test_machine'] %}
+                $link = mysqli_connect('localhost', '{{ hostvars[host].dbuser }}', '{{ hostvars[host].upassword }}') or die(mysqli_connect_error($link));
+        {% endfor %}
         $res = mysqli_query($link, "SHOW DATABASES;");
         while ($row = mysqli_fetch_assoc($res)) {
                 echo $row['Database'] . "\n";
@@ -19,3 +21,4 @@ echo  "List of Databases: </BR>";
 ?>
 </body>
 </html>
+
