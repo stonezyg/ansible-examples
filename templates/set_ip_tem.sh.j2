@@ -7,6 +7,8 @@ ONBOOT=yes
 BOOTPROTO=static  
 IPADDR={{ ip }}  
 NETMASK={{ netmask }}  
+GATEWAY=192.168.122.1
+DNS1=192.168.122.1
 EOF
 
 /etc/init.d/network restart
