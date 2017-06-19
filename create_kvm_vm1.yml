@@ -1,6 +1,6 @@
 ---
-- hosts:   kvm
-  remote_user: wangzezhi
+- hosts:   kvm_host
+  remote_user: yagzhang
   sudo: yes
   vars:
     image_name: centos7_2_v2_auto
