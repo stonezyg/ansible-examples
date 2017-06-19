@@ -26,8 +26,14 @@
               insertafter="^:OUTPUT " line="-A INPUT -p tcp  --dport {{ mysql_port }} -j  ACCEPT"
   notify: restart iptables
 
+#- name: Create Application Database
+#  mysql_db: name={{ dbname }} state=present
+
+- name: copy mysql import file 
+  template: src=world.sql.j2 dest=/tmp/world.sql
+  
 - name: Create Application Database
-  mysql_db: name={{ dbname }} state=present
+  mysql_db: state=import name=all target=/tmp/world.sql
 
 - name: Create Application DB User
   mysql_user: name={{ dbuser }} password={{ upassword }} priv='*.*:ALL'  state=present
