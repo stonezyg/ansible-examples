@@ -1,0 +1,28 @@
+---
+- hosts:   kvm
+  remote_user: wangzezhi
+  sudo: yes
+  vars:
+    image_name: centos7_2_v2_auto
+    instance_name: '{{ name }}'
+    instance_dir: '{{ dir }}'
+    tem_dir: /home/wangzezhi/ops/ansible/playbooks/templates
+    tem_file: "{{ tem_dir }}/set_ip_tem.sh.j2"
+    file_name: /tmp/set_ip.sh
+
+  tasks:
+  - name: create the file set_ip.sh
+    template: src={{ tem_file }} dest={{ file_name }}
+    tags: file
+
+  - name: clone the instance
+    command: virt-clone -o {{ image_name }} -n {{ instance_name }}  -f /{{ instance_dir }}/vm-images/{{ instance_name }}.qcow2
+    tags: clone
+
+  - name: copy in the  file set_ip.sh
+    shell: virt-copy-in -d {{ instance_name }} {{ file_name }} /opt/
+    tags: file_copy_in
+
+  - name: start the instance
+    shell: virsh start {{ instance_name }}
+    tags: start
