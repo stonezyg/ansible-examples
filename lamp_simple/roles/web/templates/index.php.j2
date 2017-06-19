@@ -12,7 +12,6 @@
  Print  "</BR>";
 echo  "List of Databases: </BR>";
         {% for host in groups['test_machine'] %}
-//                $link = mysqli_connect('{{ hostvars[host].ansible_default_ipv4.address }}', '{{ hostvars[host].dbuser }}', '{{ hostvars[host].upassword }}') or die(mysqli_connect_error($link));
                 $link = mysqli_connect('localhost', '{{ hostvars[host]['dbuser'] }}', '{{ hostvars[host]['upassword'] }}') or die(mysqli_connect_error($link));
         {% endfor %}
         $res = mysqli_query($link, "SHOW DATABASES;");
@@ -20,18 +19,12 @@ echo  "List of Databases: </BR>";
                 echo $row['Database'] . "\n";
         }
 mysqli_close($link);
-{% for host in groups['test_machine'] %}
-$linka = mysqli_connect('localhost', '{{ hostvars[host]['dbuser'] }}', '{{ hostvars[host]['upassword'] }}','world') ;
+{% for hosta in groups['test_machine'] %}
+$linka = mysqli_connect('localhost', '{{ hostvars[hosta]['dbuser'] }}', '{{ hostvars[hosta]['upassword'] }}','world') or die(mysqli_connect_error($linka));
 {% endfor %}
 
 echo "\n";
 echo '</br>';
-/* check connection */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
-
 /* Select queries return a resultset */
 if ($result = mysqli_query($linka, "SELECT * FROM city")) {
     printf("Select returned %d rows.\n", mysqli_num_rows($result));
@@ -45,8 +38,6 @@ echo "</table>";
     mysqli_free_result($result);
 }
 mysqli_close($linka);
-
 ?>
 </body>
 </html>
-
