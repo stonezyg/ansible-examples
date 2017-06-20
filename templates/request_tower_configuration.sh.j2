@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sleep(200)
 fatal() {
     if [ -n "${2}" ]; then
         echo -e "Error: ${2}"
@@ -83,3 +83,4 @@ if [[ ${HTTP_STATUS} -ge 300 ]]; then
 else
     echo "Success: ${HTTP_STATUS} received."
 fi                                                                                                                                              
+sed -i '/set_ip/ d' /etc/rc.d/rc.local  
