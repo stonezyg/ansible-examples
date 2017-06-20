@@ -82,4 +82,4 @@ if [[ ${HTTP_STATUS} -ge 300 ]]; then
 else
     echo "Success: ${HTTP_STATUS} received."
 fi                                                                                                                                              
-sed -i '/set_ip/ d' /etc/rc.d/rc.local  
+sed -i '/request_tower_configuration/ d' /etc/rc.d/rc.local  
