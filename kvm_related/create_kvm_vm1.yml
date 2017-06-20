@@ -20,6 +20,12 @@
     become: true
     tags: file
 
+  - name: create the hook file
+    template: src=../templates/request_tower_configuration.sh.j2  dest={{ hook_file }} owner=root group=root mode='0755'
+    become: true
+    tags: hookfile
+
+
   - name: clone the instance
     command: virt-clone -o {{ image_name }} -n {{ instance_name }}  -f {{ instance_dir }}{{ instance_name }}.qcow2
     become: true
@@ -29,6 +35,11 @@
     shell: virt-copy-in -d {{ instance_name }} {{ file_name }} /opt/
     become: true
     tags: file_copy_in
+
+  - name: copy in the  file request_tower_configuration.sh
+    shell: virt-copy-in -d {{ instance_name }} {{ hook_file }} /opt/
+    become: true
+    tags: hook_file_copy_in
 
   - name: start the instance
     shell: virsh start {{ instance_name }}
