@@ -19,8 +19,8 @@
     template: src=../templates/set_ip_tem.sh.j2 dest={{ file_name }} owner=root group=root mode='0755'
     become: true
     tags: file
-
-  - name: create the hook file
+    
+  - name: create the hook file
     template: src=../templates/request_tower_configuration.sh.j2  dest={{ hook_file }} owner=root group=root mode='0755'
     become: true
     tags: hookfile
