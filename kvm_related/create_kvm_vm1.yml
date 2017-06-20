@@ -35,8 +35,8 @@
     shell: virt-copy-in -d {{ instance_name }} {{ file_name }} /opt/
     become: true
     tags: file_copy_in
-
-  - name: copy in the  file request_tower_configuration.sh
+    
+  - name: copy in the  file request_tower_configuration.sh
     shell: virt-copy-in -d {{ instance_name }} {{ hook_file }} /opt/
     become: true
     tags: hook_file_copy_in
