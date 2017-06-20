@@ -7,7 +7,7 @@
     tem_dir: /home/wangzezhi/ops/ansible/playbooks/templates
     tem_file: "{{ tem_dir }}/set_ip_tem.sh.j2"
     file_name: /tmp/set_ip.sh
-
+    hook_file: /tmp/request_tower_configuration.sh
 
   tasks:
   - name: just test virsh command 
