@@ -276,6 +276,10 @@
         - /tmp/ansible-checkresult-common.txt
         - /tmp/ansible-checkmod_current0.sh
 
+  - name: change script runnbale
+    delegate_to: localhost
+    command: chmod +x  create_final_reuslts.sh
+
   - name: Run the below script
     delegate_to: localhost
     command: sh create_final_reuslts.sh
