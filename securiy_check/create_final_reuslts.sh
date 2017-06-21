@@ -8,4 +8,4 @@ for i in results/* ; do
 done
 python csv2excel.py
 cp summary.csv  /var/lib/awx/results/`date "+%Y_%m_%d_%H_%M_%S"summary.csv
-cp summary.csv  /var/lib/awx/results/`date "+%Y_%m_%d_%H_%M_%S"summary.xlsx`
+cp summary.xlsx  /var/lib/awx/results/`date "+%Y_%m_%d_%H_%M_%S"summary.xlsx`
