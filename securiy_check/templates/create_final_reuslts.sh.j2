@@ -1,0 +1,11 @@
+#!/bin/sh
+
+rm -f {{ playbook_dir }}/results/* main.retry
+
+> {{ playbook_dir }}/summary.csv
+for i in results/* ; do 
+  cat $i >> {{ playbook_dir }}/summary.csv
+  echo ,,, >> {{ playbook_dir }}/summary.csv
+  echo ,,, >> {{ playbook_dir }}/summary.csv
+done
+python csv2excel.py
