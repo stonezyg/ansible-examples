@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: test_machine
   vars:
     output_diskinfo: /tmp/ansible-checkresult-disk.txt 
     output: /tmp/ansible-checkresult-common.txt 
