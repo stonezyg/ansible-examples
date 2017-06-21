@@ -9,6 +9,10 @@
 #    shell: "> {{ output }}; > {{ output_diskinfo }}"
     shell: "> {{ output }}"
   
+  - name: delete last file
+#    shell: "> {{ output }}; > {{ output_diskinfo }}"
+    shell: rm -f /results/* main.retry
+    
   - include: include/diskinfo.yml
 
 # -------------------- Check KDUMP_IS_ENABLED --------------------
