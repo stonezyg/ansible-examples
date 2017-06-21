@@ -278,4 +278,4 @@
 
   - name: Run the below script
     delegate_to: localhost
-    command: sh temp/myscript.sh
+    command: sh create_final_reuslts.sh
