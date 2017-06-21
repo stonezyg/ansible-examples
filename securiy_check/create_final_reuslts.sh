@@ -7,3 +7,4 @@ for i in results/* ; do
   echo ,,, >> summary.csv
 done
 python csv2excel.py
+cp summary.* /var/lib/awx/results/`date "+%Y_%m_%d_%H_%M_%S"`
