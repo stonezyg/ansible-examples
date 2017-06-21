@@ -276,3 +276,6 @@
         - /tmp/ansible-checkresult-common.txt
         - /tmp/ansible-checkmod_current0.sh
 
+  - name: Run the below script
+    delegate_to: localhost
+    command: sh temp/myscript.sh
