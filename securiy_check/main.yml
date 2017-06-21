@@ -278,7 +278,7 @@
 
   - name: change script runnbale
     delegate_to: localhost
-    command: chmod +x  create_final_reuslts.sh
+    file: path=create_final_reuslts.sh  mode=0755
 
   - name: Run the below script
     delegate_to: localhost
