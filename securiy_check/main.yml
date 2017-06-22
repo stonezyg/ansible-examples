@@ -11,7 +11,7 @@
   
   - name: delete last file
 #    shell: "> {{ output }}; > {{ output_diskinfo }}"
-    shell: rm -f /results/* main.retry
+    shell: rm -f  main.retry
     
   - include: include/diskinfo.yml
 
