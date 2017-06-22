@@ -1,0 +1,11 @@
+  - name: change /tmp/securityscan/results 
+    delegate_to: localhost
+    file: path=/tmp/securityscan/results state=directory owner=root group=root mode='0755'
+    
+  - name: change script runnbale
+    delegate_to: localhost
+    template: src=templates/create_final_reuslts.sh.j2  dest=/tmp/securityscan/results/ owner=awx group=awx mode='0755'
+    
+  - name: Run the below script
+    delegate_to: localhost
+    command: sh /tmp/securityscan/results/create_final_reuslts.sh
