@@ -4,7 +4,7 @@
   tasks:
   - name: change /tmp/securityscan/results 
     delegate_to: localhost
-    file: path=/var/lib/awx/securityscan/results state=directory  mode=0755
+    shell: mkdir -p /var/lib/awx/securityscan/results
     
   - name: change script runnbale
     delegate_to: localhost
