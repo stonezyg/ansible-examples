@@ -4,7 +4,7 @@
   tasks:
     
   - name: change script runnbale
-    template: src=templates/create_final_reuslts.sh.j2  dest=/var/lib/awx/securityscan/create_final_reuslts.sh owner=awx group=awx mode='0755'
+    template: src=templates/create_final_reuslts.sh.j2  dest=/tmp/securityscan/results/create_final_reuslts.sh owner=awx group=awx mode='0755'
     
   - name: Run the below script
-    command: sh /var/lib/awx/securityscan/create_final_reuslts.sh
+    command: sh /tmp/securityscan/create_final_reuslts.sh
