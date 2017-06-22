@@ -2,9 +2,6 @@
 - hosts: test_machine
 
   tasks:
-  - name: change /tmp/securityscan/results 
-    delegate_to: localhost
-    shell: mkdir -p /var/lib/awx/securityscan/results
     
   - name: change script runnbale
     delegate_to: localhost
