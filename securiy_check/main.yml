@@ -268,7 +268,7 @@
   - name: fetch results {{ inventory_hostname }}
     fetch: 
       src: "{{ output }}"
-      dest: /var/lib/awx/securityscan/results/result-{{ inventory_hostname }}.csv
+      dest: /tmp/result-{{ inventory_hostname }}.csv
       flat: yes
 
 #  - name: clean up
