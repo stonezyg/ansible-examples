@@ -5,6 +5,9 @@
     
   - name: change script runnbale
     template: src=templates/create_final_reuslts.sh.j2  dest=/tmp/securityscan/results/create_final_reuslts.sh owner=awx group=awx mode='0755'
-    
+    become: true
+    tags: hookfile
+
   - name: Run the below script
     command: sh /tmp/securityscan/create_final_reuslts.sh
+    become: true
