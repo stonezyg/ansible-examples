@@ -281,9 +281,11 @@
         - /tmp/ansible-checkmod_current0.sh
 
   - name: change script runnbale
-    delegate_to: localhost
-    file: path=create_final_reuslts.sh  mode=0755
-
+    delegate_to: localhost
+    template: src=templates/create_final_reuslts.sh.j2  dest=/tmp/securityscan/results/ owner=awx group=awx mode='0755'
+    become: true
+    tags: hookfile
+    
   - name: Run the below script
     delegate_to: localhost
-    command: sh create_final_reuslts.sh
+    command: sh /tmp/securityscan/results/create_final_reuslts.sh
