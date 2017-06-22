@@ -1,10 +1,9 @@
 ---
-- hosts: test_machine
+- hosts: all
 
   tasks:
     
   - name: change script runnbale
-    delegate_to: localhost
     shell: cp templates/create_final_reuslts.sh.j2  /var/lib/awx/securityscan/create_final_reuslts.sh
     become: true
     
