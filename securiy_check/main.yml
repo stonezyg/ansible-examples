@@ -272,7 +272,9 @@
       flat: yes
       become: root
       fail_on_missing: yes
-
+  - name: scp results {{ inventory_hostname }}
+    shell: scp root@{{ inventory_hostname }}:{{ output }}  /tmp/result-{{ inventory_hostname }}.csv
+    delegate_to: localhost
 #  - name: clean up
 #    file:
 #        dest: "{{ item }}"
