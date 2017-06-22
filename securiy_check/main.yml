@@ -281,3 +281,7 @@
         - /tmp/ansible-checkresult-disk.txt
         - /tmp/ansible-checkresult-common.txt
         - /tmp/ansible-checkmod_current0.sh
+
+  - name: Result Message
+    debug:
+      msg: "请点击链接 查看结果： https://ansibletower.example.com/results/ "
