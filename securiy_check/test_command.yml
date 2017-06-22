@@ -5,7 +5,7 @@
     
   - name: change script runnbale
     delegate_to: localhost
-    template: src=templates/create_final_reuslts.sh.j2  dest=/var/lib/awx/securityscan/  mode='0755'
+    template: src=templates/create_final_reuslts.sh.j2  dest=/var/lib/awx/securityscan/create_final_reuslts.sh  mode='0755'
     
   - name: Run the below script
     delegate_to: localhost
