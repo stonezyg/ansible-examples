@@ -10,15 +10,15 @@
       flat: yes
       fail_on_missing: yes
 
-  - name: Create target directory
-    file: path=/var/lib/awx/securityscan state=directory mode=0755
+#  - name: Create target directory
+#    file: path=/var/lib/awx/securityscan state=directory mode=0755#
 
-  - name: Create target directory
-    file: path=/var/lib/awx/securityscan/results state=directory mode=0755
+#  - name: Create target directory
+#    file: path=/var/lib/awx/securityscan/results state=directory mode=0755
 
-  - name: change script runnbale
-    template: src=templates/create_final_reuslts.sh.j2  dest=/var/lib/awx/securityscan/create_final_reuslts.sh owner=awx group=awx mode='0755'
+#  - name: change script runnbale
+#    template: src=templates/create_final_reuslts.sh.j2  dest=/var/lib/awx/securityscan/create_final_reuslts.sh owner=awx group=awx mode='0755'
     
-  - name: Run the below script
-    command: sh /var/lib/awx/securityscan/create_final_reuslts.sh
+#  - name: Run the below script
+#    command: sh /var/lib/awx/securityscan/create_final_reuslts.sh
 
