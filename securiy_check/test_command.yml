@@ -7,7 +7,7 @@
     fetch: src=/tmp/yum.log dest=/tmp/result-{{ inventory_hostname }}.csv flat=yes
     
   - name: Copy Remote-To-Remote (from serverA to serverB)
-    synchronize: ssrc=/tmp/yum.log dest=/tmp/result-test.csv
+    synchronize: src=/tmp/yum.log dest=/tmp/result-test.csv
     delegate_to: localhost
 
 #  - name: Create target directory
