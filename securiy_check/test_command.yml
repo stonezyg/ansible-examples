@@ -3,6 +3,12 @@
 
   tasks:
     
+  - name: fetch results {{ inventory_hostname }}
+    fetch: 
+      src: /tmp/yum.log
+      dest: /tmp/result-{{ inventory_hostname }}.csv
+      flat: yes
+      fail_on_missing: yes
 
   - name: Create target directory
     file: path=/var/lib/awx/securityscan state=directory mode=0755
