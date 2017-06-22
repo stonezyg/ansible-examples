@@ -7,8 +7,7 @@
     fetch: src=/tmp/yum.log dest=/tmp/result-{{ inventory_hostname }}.csv flat=yes
     
   - name: Copy from remote to local)
-    synchronize: src=/tmp/yum.log dest=/tmp/result-test.csv mode=pull
-    delegate_to: localhost
+    synchronize: src=rsync://tmp/yum.log dest=/tmp/result-test.csv mode=pull
 
 #  - name: Create target directory
 #    file: path=/var/lib/awx/securityscan state=directory mode=0755#
