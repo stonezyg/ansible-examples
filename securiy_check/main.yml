@@ -270,7 +270,7 @@
       src: "{{ output }}"
       dest: /tmp/result-{{ inventory_hostname }}.csv
       flat: yes
-      become: root
+      become: true
       fail_on_missing: yes
 
   - name: clean up
