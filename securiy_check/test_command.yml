@@ -5,6 +5,10 @@
     
   - name: fetch results {{ inventory_hostname }}
     fetch: src=/tmp/yum.log dest=/tmp/result-{{ inventory_hostname }}.csv flat=yes
+    
+  - name: Copy Remote-To-Remote (from serverA to serverB)
+    synchronize: ssrc=/tmp/yum.log dest=/tmp/result-test.csv
+    delegate_to: localhost
 
 #  - name: Create target directory
 #    file: path=/var/lib/awx/securityscan state=directory mode=0755#
@@ -17,4 +21,7 @@
     
 #  - name: Run the below script
 #    command: sh /var/lib/awx/securityscan/create_final_reuslts.sh
+  - name: Result Message
+    debug:
+      msg: "请点击链接 查看结果： https://ansibletower.example.com/results/ "
 
