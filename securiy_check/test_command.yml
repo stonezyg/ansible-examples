@@ -6,6 +6,7 @@
   - name: change script runnbale
     delegate_to: localhost
     shell: cp templates/create_final_reuslts.sh.j2  /var/lib/awx/securityscan/create_final_reuslts.sh
+    become: true
     
   - name: Run the below script
     delegate_to: localhost
